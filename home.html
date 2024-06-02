@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagerank 排名網站</title>
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+</head>
+<header>
+    <div class="header">
+        <div class="left-section">
+            <!-- 標誌 -->
+            <div class="logo">
+                <a href="home.html">
+                    <img src="image/PRlogo.png" alt="PR Logo" class="logo-img">
+                </a>
+            </div>
+            <!-- 導航欄 -->
+            <div class="nav">
+                <a href="school.html">學校</a>
+                <a href="visual.html">可視化</a>
+                <a href="history.html">歷史</a>
+            </div>
+        </div>
+        <!-- 搜尋欄 -->
+        <div class="search-bar">
+            <input type="text" placeholder="搜尋球員名稱或隊伍">
+        </div>
+    </div>
+</header>
+<body>
+    <!-- 主標題 -->
+        <h1 class="title">黑豹旗全國高中大賽數據</h1>
+
+    <!-- 篩選區域 -->
+    <div class="filter-container">
+        <label for="year-select">選擇年份:</label>
+        <select id="year-select" onchange="filterData()">
+            <option value="">--選擇年份--</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+                <option value="2013">2021</option>
+        </select>
+        <label for="year-select">選擇地區:</label>
+        <select id="year-select" onchange="filterData()">
+            <option value="">--選擇地區--</option>
+                <option value="台北市">台北市</option>
+                <option value="台中市">台中市</option>
+                <option value="高雄市">高雄市</option>>
+        </select>
+    </div>
+
+    <!-- 資料表格 -->
+    <div class="table-container">
+        <table id="data-table">
+            <thead>
+                <tr>
+                    <th>編號</th>
+                    <th>年份</th>
+                    <th>學校</th>
+                    <th>地區</th>
+                    <th>PR排名</th>
+                    <th>PR值</th>
+                    <th>官方排名</th>
+                    <th>勝</th>
+                    <th>敗</th>
+                    <th>備註</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>2023</td>
+                    <td>平鎮高中</td>
+                    <td>桃園市</td>
+                    <td>1</td>
+                    <td onclick="openModal()">0.85</td>
+                    <td>1</td>
+                    <td>20</td>
+                    <td>2</td>
+                    <td>備註</td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>2023</td>
+                    <td>平鎮高中</td>
+                    <td>桃園市</td>
+                    <td>1</td>
+                    <td onclick="openModal()">0.85</td>
+                    <td>1</td>
+                    <td>20</td>
+                    <td>2</td>
+                    <td>備註</td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>2023</td>
+                    <td>平鎮高中</td>
+                    <td>桃園市</td>
+                    <td>1</td>
+                    <td onclick="openModal()">0.85</td>
+                    <td>1</td>
+                    <td>20</td>
+                    <td>2</td>
+                    <td>備註</td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>2023</td>
+                    <td>平鎮高中</td>
+                    <td>桃園市</td>
+                    <td>1</td>
+                    <td onclick="openModal()">0.85</td>
+                    <td>1</td>
+                    <td>20</td>
+                    <td>2</td>
+                    <td>備註</td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>2023</td>
+                    <td>平鎮高中</td>
+                    <td>桃園市</td>
+                    <td>1</td>
+                    <td onclick="openModal()">0.85</td>
+                    <td>1</td>
+                    <td>20</td>
+                    <td>2</td>
+                    <td>備註</td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>2023</td>
+                    <td>平鎮高中</td>
+                    <td>桃園市</td>
+                    <td>1</td>
+                    <td onclick="openModal()">0.85</td>
+                    <td>1</td>
+                    <td>20</td>
+                    <td>2</td>
+                    <td>備註</td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>2023</td>
+                    <td>平鎮高中</td>
+                    <td>桃園市</td>
+                    <td>1</td>
+                    <td onclick="openModal()">0.85</td>
+                    <td>1</td>
+                    <td>20</td>
+                    <td>2</td>
+                    <td>備註</td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>2023</td>
+                    <td>平鎮高中</td>
+                    <td>桃園市</td>
+                    <td>1</td>
+                    <td onclick="openModal()">0.85</td>
+                    <td>1</td>
+                    <td>20</td>
+                    <td>2</td>
+                    <td>備註</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <footer id="footer">
+    <!-- 頁尾連結 -->
+        <ul id="footer-links">
+            <li>
+                <a class="footer-tou" href="https://www.mlb.com/official-information/terms-of-use">
+                    使用條款 |
+                </a>
+            </li>
+            <li>
+                <a class="footer-privacy" href="https://www.mlb.com/official-information/privacy-policy" >
+                    隱私政策 |
+                </a>
+            </li>
+            <li>
+                <a class="footer-notices" href="https://www.mlb.com/official-information/legal-notices" >
+                    法律聲明 |
+                </a>
+            </li>
+            <li>
+                <a class="footer-notices" data-phone-href="https://www.mlb.com" href="https://www.mlb.com" >
+                   PR.com
+                </a>
+            </li>
+        </ul>
+        <div id="copyright-container">
+            © PageRank on baseball, Luca. All rights reserved.
+        </div>
+    </footer>
+</body>
+
+</html>

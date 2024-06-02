@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>比較和統計</title>
+    <link rel="stylesheet" href="css/style4.css">
+</head>
+<header>
+    <div class="header">
+        <div class="left-section">
+            <!-- 標誌 -->
+            <div class="logo">
+                <a href="home.html">
+                    <img src="image/PRlogo.png" alt="PR Logo" class="logo-img">
+                </a>
+            </div>
+            <!-- 導航欄 -->
+            <div class="nav">
+                <a href="school.html">學校</a>
+                <a href="visual.html">可視化</a>
+                <a href="history.html">歷史</a>
+            </div>
+        </div>
+        <!-- 搜尋欄 -->
+        <div class="search-bar">
+            <input type="text" placeholder="搜尋球員名稱或隊伍">
+        </div>
+    </div>
+</header>
+
+
+<body>
+    <!-- 主標題 -->
+    <h1 class="title">學校比較</h1>
+
+
+    <!-- 籃球統計 -->
+    <div class="stats-container">
+        <div class="team-select">
+            <select id="team1" onchange="updateBasketballStats()">
+                <option value="">--選擇學校--</option>
+                <option value="平鎮高中">平鎮高中</option>
+                <option value="穀保家商">穀保家商</option>
+                <option value="高苑工商">高苑工商</option>
+                <option value="鶯歌工商">鶯歌工商</option>
+                <option value="普門高中">普門高中</option>
+                <!-- 其他选项 -->
+            </select>
+            <select id="team2" onchange="updateBasketballStats()">
+                <option value="">--選擇學校--</option>
+                    <option value="平鎮高中">平鎮高中</option>
+                    <option value="穀保家商">穀保家商</option>
+                    <option value="高苑工商">高苑工商</option>
+                    <option value="鶯歌工商">鶯歌工商</option>
+                    <option value="普門高中">普門高中</option>
+                <!-- 其他选项 -->
+            </select>
+        </div>
+        <div class="stats">
+            <div class="team-stats" id="team1-stats">
+                <h2>勝利數</h2>
+                <div>最大勝分: --</div>
+                <div>總得分: --</div>
+                <div>場均得分: --</div>
+            </div>
+            <div class="team-stats" id="team2-stats">
+                <h2>勝利數</h2>
+                <div>最大勝分: --</div>
+                <div>總得分: --</div>
+                <div>場均得分: --</div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="footer">
+        <!-- 頁尾連結 -->
+            <ul id="footer-links">
+                <li>
+                    <a class="footer-tou" href="https://www.mlb.com/official-information/terms-of-use">
+                        使用條款 |
+                    </a>
+                </li>
+                <li>
+                    <a class="footer-privacy" href="https://www.mlb.com/official-information/privacy-policy" >
+                        隱私政策 |
+                    </a>
+                </li>
+                <li>
+                    <a class="footer-notices" href="https://www.mlb.com/official-information/legal-notices" >
+                        法律聲明 |
+                    </a>
+                </li>
+                <li>
+                    <a class="footer-notices" data-phone-href="https://www.mlb.com" href="https://www.mlb.com" >
+                       PR.com
+                    </a>
+                </li>
+            </ul>
+            <div id="copyright-container">
+                © PageRank on baseball, Luca. All rights reserved.
+            </div>
+        </footer>
+        </div>
+        <script src="script2.js"></script>
+</body>
+</html>

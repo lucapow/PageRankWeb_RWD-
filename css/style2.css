@@ -1,0 +1,212 @@
+/* style.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Header 部分 */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #050308;
+    color: #ffffff;
+}
+
+.left-section {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 60px; /* 限制圖片高度 */
+    width: auto;  /* 確保圖片按比例縮放 */
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-left: 20px; /* 調整導航欄和標誌之間的距離 */
+}
+
+.nav a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 18px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    padding: 5px;
+}
+
+/* Title 標題部分 */
+.title {
+    text-align: center; /* 將標題置中 */
+    margin: 20px 0; /* 添加上下邊距 */
+    font-size: 3em; /* 調整字體大小 */
+    color: #333333; /* 設置字體顏色 */
+    font-family: 'TaipeiSans TC Beta', sans-serif; /* 設置字體 */
+    font-weight: bold;
+    position: relative;
+}
+
+.title::after {
+    content: "";
+    display: block;
+    width: 50%;
+    height: 2px;
+    background: #333333;
+    position: absolute;
+    bottom: -10px;
+    left: 25%;
+}
+.left-section {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 60px; /* 限制圖片高度 */
+    width: auto;  /* 確保圖片按比例縮放 */
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-left: 20px; /* 調整導航欄和標誌之間的距離 */
+}
+
+.nav a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 18px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    padding: 5px;
+}
+
+main {
+    padding: 20px;
+    max-width: 1200px; /* 調整主內容區域的最大寬度 */
+    margin: 0 auto; /* 使主內容居中 */
+}
+
+/* 九宮格布局 */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 三列布局 */
+    gap: 20px; /* 項目之間的間距 */
+}
+
+.grid-item {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.chart {
+    height: 200px; /* 調整圖表區域的高度 */
+    background-color: #eaeaea;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #999;
+    font-size: 24px;
+    overflow: hidden; /* 隐藏放大后的溢出部分 */
+}
+
+.chart img {
+    max-width: 100%; /* 圖片最大寬度設為100%，自適應父容器 */
+    height: auto; /* 高度自動 */
+    border-radius: 5px; /* 圖片圓角 */
+    cursor: pointer; /* 鼠标变为指针 */
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 20px;
+}
+
+#footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 10px 0;
+    display: flex;
+    justify-content: center;
+}
+
+#footer-links li {
+    margin: 0 10px;
+}
+
+#footer-links a {
+    color: white;
+    text-decoration: none;
+}
+
+#footer-links a:hover {
+    text-decoration: underline;
+}
+
+#copyright-container {
+    font-size: 14px;
+}
+
+/* Overlay 样式 */
+.overlay {
+    display: none; /* 默认隐藏 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.overlay img {
+    max-width: 90%;
+    max-height: 90%;
+}
