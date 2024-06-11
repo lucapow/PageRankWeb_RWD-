@@ -6,22 +6,84 @@ function updateStats() {
     // 示例代码：
     let team1 = document.getElementById('team1').value;
     let team2 = document.getElementById('team2').value;
-
-    if (team1 === '丹佛金塊') {
+    if (team1 === '--選擇學校--') {
         document.getElementById('team1-stats').innerHTML = `
-            <h2>40 胜</h2>
-            <div>最大胜分: 129:98</div>
-            <div>总得分: 10599</div>
-            <div>场均得分: 105.99</div>
+            <h2>勝利數</h2>
+            <div>最大勝分: --</div>
+            <div>總得分: --</div>
+            <div>場均得分: --</div>
         `;
     }
-
-    if (team2 === '波士顿塞尔提克') {
+    if (team1 === '平鎮高中') {
+        document.getElementById('team1-stats').innerHTML = `
+            <h2>40 勝</h2>
+            <div>最大勝分: 129:98</div>
+            <div>總得分: 10599</div>
+            <div>場均得分: 105.99</div>
+        `;
+    }
+    if (team1 === '穀保家商') {
+        document.getElementById('team1-stats').innerHTML = `
+            <h2>40 勝</h2>
+            <div>最大勝分: 129:98</div>
+            <div>總得分: 10599</div>
+            <div>場均得分: 105.99</div>
+        `;
+    }
+    if (team1 === '高苑工商') {
+        document.getElementById('team1-stats').innerHTML = `
+            <h2>40 勝</h2>
+            <div>最大勝分: 129:98</div>
+            <div>總得分: 10599</div>
+            <div>場均得分: 105.99</div>
+        `;
+    }
+    if (team1 === '鶯歌工商') {
+        document.getElementById('team1-stats').innerHTML = `
+            <h2>40 勝</h2>
+            <div>最大勝分: 129:98</div>
+            <div>總得分: 10599</div>
+            <div>場均得分: 105.99</div>
+        `;
+    }
+    if (team2 === '--選擇學校--') {
         document.getElementById('team2-stats').innerHTML = `
-            <h2>60 胜</h2>
-            <div>最大胜分: 114:76</div>
-            <div>总得分: 10907</div>
-            <div>场均得分: 109.07</div>
+            <h2>勝利數</h2>
+            <div>最大勝分: --</div>
+            <div>總得分: --</div>
+            <div>場均得分: --</div>
+        `;
+    }
+    if (team2 === '平鎮高中') {
+        document.getElementById('team2-stats').innerHTML = `
+            <h2>60 勝</h2>
+            <div>最大勝分: 129:98</div>
+            <div>總得分: 10599</div>
+            <div>場均得分: 105.99</div>
+        `;
+    }
+    if (team2 === '穀保家商') {
+        document.getElementById('team2-stats').innerHTML = `
+             <h2>60 勝</h2>
+            <div>最大勝分: 129:98</div>
+            <div>總得分: 10599</div>
+            <div>場均得分: 105.99</div>
+        `;
+    }
+    if (team2 === '高苑工商') {
+        document.getElementById('team2-stats').innerHTML = `
+             <h2>60 勝</h2>
+            <div>最大勝分: 129:98</div>
+            <div>總得分: 10599</div>
+            <div>場均得分: 105.99</div>
+        `;
+    }
+    if (team2 === '鶯歌工商') {
+        document.getElementById('team2-stats').innerHTML = `
+             <h2>60 勝</h2>
+            <div>最大勝分: 129:98</div>
+            <div>總得分: 10599</div>
+            <div>場均得分: 105.99</div>
         `;
     }
 }

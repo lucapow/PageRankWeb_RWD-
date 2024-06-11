@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>比較和統計</title>
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style2.css">
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-wrapper">
+            <div class="header">
+                <div class="left-section">
+                    <div class="navbar">
+                        <div class="logo">
+                            <a href="home.html">
+                                <img src="image/PRlogo.png" alt="PR Logo" class="logo-img">
+                            </a>
+                        </div>
+                        <a href="school.html">學校對比</a>
+                        <a href="visual2.html">數據可視化</a>
+                        <a href="history.html">黑豹旗與PR演算法</a>
+                    </div>
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="搜尋隊伍">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <h1 class="title">棒球可視化</h1>
+        <section class="grid-container">
+            <div class="grid-item">
+                <h2>各學校的PR值變化圖</h2>
+                <div class="chart" id="bat-speed-chart">
+                    <img src="image/line chart.png" alt="Bat Speed Distribution">
+                </div>
+                <p>此圖表展示出各學校PR值的歷年變化趨勢。PR值越高，表示學校的表現越好。不同顏色代表不同學校，線條顯示了各學校每一年的變化。</p>
+            </div>
+            <div class="grid-item">
+                <h2>各學校的PR值比較</h2>
+                <div class="chart" id="bat-speed-chart">
+                    <img src="image/bar chart.png" alt="Bat Speed Distribution">
+                </div>
+                <p>此柱狀圖展示了在2013年各學校PR值的比較。柱狀的高度代表了各學校的PR值，幫助我們了解哪間學校表現最佳。</p>
+            </div>
+            <div class="grid-item">
+                <h2>球隊之間的PR值關係圖</h2>
+                <div class="chart" id="home-run-chart">
+                    <img src="image/pr.png" alt="Home Run Derby">
+                </div>
+                <p>此圖表展示了不同球隊之間的PR值關係。圖中的節點代表球隊，連線表示球隊之間的比賽結果，幫助我們理解球隊之間的競爭關係。</p>
+            </div>
+            <div class="grid-item">
+                <h2>縣市PR值分布熱區圖</h2>
+                <div class="chart" id="home-run-chart">
+                    <img src="image/heatmap.png" alt="Home Run Derby">
+                </div>
+                <p>此熱區圖展示了不同縣市的PR值分布。顏色越深表示PR值越高，幫助我們了解哪個縣市的棒球實力比較強。</p>
+            </div>
+            <div class="grid-item">
+                <h2>球隊歷屆的排名</h2>
+                <div class="chart" id="pitch-chart">Chart Placeholder</div>
+                <p>圖表說明文字</p>
+            </div>
+            <div class="grid-item">
+                <h2>*****</h2>
+                <div class="chart" id="home-run-chart">Chart Placeholder</div>
+                <p>圖表說明文字</p>
+            </div>
+            <div class="grid-item">
+                <h2>*****</h2>
+                <div class="chart" id="bat-speed-chart">Chart Placeholder</div>
+                <p>圖表說明文字</p>
+            </div>
+            <div class="grid-item">
+                <h2>*****</h2>
+                <div class="chart" id="pitch-chart">Chart Placeholder</div>
+                <p>圖表說明文字</p>
+            </div>
+            <div class="grid-item">
+                <h2>*****</h2>
+                <div class="chart" id="home-run-chart">Chart Placeholder</div>
+                <p>圖表說明文字</p>
+            </div>
+            <!-- 可以繼續添加更多項目 -->
+        </section>
+    </main>
+
+    <footer id="footer">
+        <ul id="footer-links">
+            <li>
+                <a class="footer-tou" href="https://www.mlb.com/official-information/terms-of-use">使用條款</a>
+            </li>
+            <li>
+                <a class="footer-privacy" href="https://www.mlb.com/official-information/privacy-policy">隱私政策</a>
+            </li>
+            <li>
+                <a class="footer-notices" href="https://www.mlb.com/official-information/legal-notices">法律聲明</a>
+            </li>
+            <li>
+                <a class="footer-notices" href="https://www.mlb.com">PR.com</a>
+            </li>
+        </ul>
+        <div id="copyright-container">
+            © PageRank on baseball, Luca. All rights reserved.
+        </div>
+    </footer>
+    <div id="overlay" class="overlay">
+        <img id="overlay-img" src="" alt="Enlarged image">
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

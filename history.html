@@ -1,74 +1,69 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>baseball history </title>
-    <link href="css/bootstrap.css" rel="stylesheet" />
-    <link rel="stylesheet" href="css/style3.css">
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/bootstrap.js"></script>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>黑豹旗與PR演算法</title>
+        <link href="css/bootstrap.css" rel="stylesheet" />
+        <link rel="stylesheet" href="css/style3.css">
+        <script src="js/jquery-3.4.1.min.js"></script>
+        <script src="js/bootstrap.js"></script>
+    </head>
 <header>
-    <div class="header">
-        <div class="left-section">
-            <!-- 標誌 -->
-            <div class="logo">
-                <a href="home.html">
-                    <img src="image/PRlogo.png" alt="PR Logo" class="logo-img">
-                </a>
+    <div class="header-wrapper">
+        <div class="header">
+            <div class="left-section">
+                <!-- 導航欄 -->
+                <div class="navbar">
+                    <div class="logo">
+                        <a href="home.html">
+                            <img src="image/PRlogo.png" alt="PR Logo" class="logo-img">
+                        </a>
+                    </div>
+                    <a href="school.html">學校對比</a>
+                    <a href="visual2.html">數據可視化</a>
+                    <a href="history.html">黑豹旗與PR演算法</a>
+                </div>
             </div>
-            <!-- 導航欄 -->
-            <div class="nav">
-                <a href="school.html">學校</a>
-                <a href="visual.html">可視化</a>
-                <a href="history.html">歷史</a>
+            <!-- 搜尋欄 -->
+            <div class="search-bar">
+                <input type="text" placeholder="搜尋隊伍">
             </div>
-        </div>
-        <!-- 搜尋欄 -->
-        <div class="search-bar">
-            <input type="text" placeholder="搜尋球員名稱或隊伍">
         </div>
     </div>
+    
 </header>
 <body>
-    <!-- 主標題 -->
-        <h1 class="title">PageRank 演算法介紹</h1>
 
-    <!-- 主要內容區 -->
+    <h1 class="title">黑豹旗全國高中棒球大賽</h1>
     <div class="container">
         <div class="left-column">
-            <article class="sc-pCPhY kvoVKQ">
-                <p>在PR（PageRank）算法中網頁被視為圖中的節點，</p>
-                <p>網頁之間的連結則被視為有向邊。</p>
-                <p>每個網頁的PR值取決於指向它的其他網頁的數量和質量，以及這些指向它的網頁自身的PR值。</p>
-                <p>如果一個網頁被更多重要的網頁所連結，那麼它的PR值就會更高。</p>
+            <article>
+                <p>黑豹旗全國高中棒球大賽（簡稱黑豹旗）是2013年創立的臺灣青棒賽事，距今已舉辦了11屆，而本賽事自2015年起，由中國信託商業銀行冠名賽事（另稱「中信盃黑豹旗」）。</p>
+                <p>這個賽事不分科班或一般同好社團均能參賽，每年比賽時間約在10月，比賽場地涵蓋整個台灣，現在被譽為全台最大的青棒賽事。</p>
             </article>
         </div>
         <div class="right-column">
-            <div class="chart" id="bat-speed-chart">
-                <img src="image/printroduce.png" alt="Bat Speed Distribution">
-            </div>
+            <img src="image/history.png" alt="Bat Speed Distribution">
+        </div>
+    </div>
+
+    <h1 class="title">PageRank 演算法介紹</h1>
+    <div class="container">
+        <div class="left-column">
+            <article>
+                <p>PR（PageRank）算法原先是Google公司所使用對搜尋引擎中的網頁進行排名的一種演算法，當PR值越高代表著這個網頁有更多的連結及點擊，因此在網頁的排名會越高。</p>
+                <p>運用在棒球排名上代表的意涵為"可以用來評估和排名球隊或球員的相對重要性或影響力"。</p>
+                <p>在PR（PageRank）算法中網頁被視為圖中的節點，網頁之間的連結則被視為有向邊。</p>
+                <p>每個網頁的PR值取決於指向它的其他網頁的數量和質量，以及這些指向它的網頁自身的PR值。如果一個網頁被更多重要的網頁所連結，那麼它的PR值就會更高。</p>
+            </article>
+        </div>
+        <div class="right-column">
+            <img src="image/printroduce.png" alt="PageRank Introduction">
         </div>
     </div>
     <!-- 主標題 -->
-    <h1 class="title">黑豹旗全國高中棒球大賽</h1>
-    <!-- 主要內容區 -->
-    <div class="container">
-        <div class="left-column">
-            <article class="sc-pCPhY kvoVKQ">
-                <p>黑豹旗全國高中棒球大賽（簡稱黑豹旗）是2013年創立的臺灣青棒賽事，距今已辦了11屆</p>
-                <p>而本賽事自2015年起，由中國信託商業銀行冠名賽事（另稱「中信盃黑豹旗」）</p>
-                <p>不分科班或一般同好社團均能參賽，現在被譽為全台最大的青棒賽事</p>
-            </article>
-        </div>
-        <div class="right-column">
-            <div class="chart" id="bat-speed-chart">
-                <img src="image/history.png" alt="Bat Speed Distribution">
-            </div>
-        </div>
-    </div>
+    
 
 
     <footer id="footer">

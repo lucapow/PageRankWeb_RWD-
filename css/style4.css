@@ -1,47 +1,63 @@
+
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    /* background-color: #f0ecea; */
 }
 /* Header 部分 */
+.header-wrapper {
+    position: relative;
+    width: 100%;
+    background-color: #f0ecea; /* 页面的背景色 */
+}
+
+.header-wrapper::before {
+    left: 0;
+}
+
+.header-wrapper::after {
+    right: 0;
+}
+
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    background-color: #050308;
+    padding: 10px 20px; /* 内部间距 */
+    background-color: #f0ecea;
     color: #ffffff;
+    width: calc(100% - 40px); /* 减去两侧空格的宽度 */
+    margin:0;
+    box-sizing: border-box;
 }
 
-.left-section {
+.navbar {
     display: flex;
+    justify-content: flex-start; /* 左对齐 */
     align-items: center;
+    background-color: #ffffff;
+    border-radius: 60px;
+    padding: 0px 0;
+    margin: 20px auto;
+    height: 80px;
+    width: 600px;
 }
 
-.logo {
-    display: flex;
-    align-items: center;
-}
-
-.logo-img {
-    height: 60px; /* 限制圖片高度 */
-    width: auto;  /* 確保圖片按比例縮放 */
-}
-
-.nav {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-left: 20px; /* 調整導航欄和標誌之間的距離 */
-}
-
-.nav a {
+.navbar a {
     text-decoration: none;
-    color: #ffffff;
-    font-size: 18px;
+    color: #000;
+    padding: 10px 10px; /* 缩小padding */
+    margin: 0 5px; /* 增加水平margin，使间隔更小 */
+    font-size: 20px;
+    font-weight: bold;
+
 }
 
+.navbar a:not(.active):hover {
+    color: #b8a54d;
+}
 .search-bar {
     display: flex;
     align-items: center;
@@ -55,6 +71,32 @@ body {
     outline: none;
     padding: 5px;
 }
+
+
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height:60px; /* 限制圖片高度 */
+    width: auto;  /* 確保圖片按比例縮放 */
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-left: 20px; /* 調整導航欄和標誌之間的距離 */
+}
+
+.nav a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 25px;
+}
+
 /* Title 標題部分 */
 .title {
     text-align: center; /* 將標題置中 */
@@ -76,7 +118,6 @@ body {
     bottom: -10px;
     left: 25%;
 }
-
 .container {
     display: flex;
     flex-wrap: wrap;
@@ -86,8 +127,6 @@ body {
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
-
 
 /* 比較區域样式 */
 .comparison-container {
@@ -145,7 +184,7 @@ body {
 }
 
 footer {
-    background-color: #333;
+    background-color: #555252;
     color: white;
     text-align: center;
     padding: 20px 0;
@@ -175,4 +214,93 @@ footer {
 
 #copyright-container {
     font-size: 14px;
+}
+
+.card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 45%;
+    margin: 10px;
+    box-sizing: border-box;
+}
+
+.card h3 {
+    margin-top: 0;
+}
+
+.stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.stat .value {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.stat .label {
+    font-size: 16px;
+    color: #666;
+}
+
+.chart-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.chart {
+    width: 90%;
+    height: 400px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.recent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.recent .game {
+    margin: 0 5px;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    color: white;
+}
+
+.recent .win {
+    background-color: green;
+}
+
+.recent .lose {
+    background-color: red;
+}
+
+.progress-circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: conic-gradient(
+        red calc(var(--percentage) * 1%), 
+        #e0e0e0 0
+    );
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.progress-circle::after {
+    content: attr(data-percentage) '%';
+    position: absolute;
+    font-size: 20px;
+    color: #333;
 }
