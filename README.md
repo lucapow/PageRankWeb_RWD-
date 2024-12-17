@@ -44,22 +44,30 @@ Visual
 * **GitHub**：版本控制與專案部署。
 ## 如何運行專案？
 1. 複製專案到本地
+```
 git clone https://github.com/lucapow/PageRankWeb_RWD-.git
 cd PageRankWeb_RWD-
-2. 安裝所需套件
+```
+3. 安裝所需套件
 確保 Python 已安裝，並安裝 requirements.txt 中的依賴項：
+```
 pip install -r requirements.txt
-3. 設置 MySQL 資料庫
+```
+4. 設置 MySQL 資料庫
 - 在 MySQL Workbench 建立 sports_data 資料庫。
 + 確保 app.py 中的資料庫連接資訊正確：
+```
 self.db = mysql.connector.connect(
     host="127.0.0.1",
     user="your_username",
     password="your_password",
     database="sports_data"
 )
+```
 4. 啟動 Flask 應用
+```
 python app.py
+```
 5. 在瀏覽器中打開
 
 * 開啟 http://127.0.0.1:5000，即可查看網站。
