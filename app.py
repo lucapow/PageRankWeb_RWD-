@@ -36,7 +36,7 @@ class DBConnection:
             self.db = mysql.connector.connect(
                 host="127.0.0.1",
                 user="luca1911",
-                password="19111215",
+                password="123456",
                 database="sports_data"
             )
             self.cursor = self.db.cursor(dictionary=True)
