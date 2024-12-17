@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作品介紹</title>
+    <!-- CSS -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css"/>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="fixed-header">
+        <nav class="nav-bar">
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul id="nav-menu">
+                <li class="nav-item"><a class="nav-link active" href="{{ url_for('home') }}">首頁</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('school') }}">學校資料</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('data') }}">棒球數據</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('visual') }}">歷年數據圖表</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="content">
+        <section class="image-section">
+            <img src="{{ url_for('static', filename='image/Add a heading.png') }}" alt="Story Image">
+        </section>
+
+        <section class="about-section">
+            <div class="left-section">
+                <h1>關於此網站</h1>
+                <div class="image-container">
+                    <img src="{{ url_for('static', filename='image/99.png') }}" alt="Story Image">
+                </div>
+            </div>
+            <div class="text-container">
+                <p><strong>設立時間</strong> 2023/07/30</p>
+                <p><strong>內容</strong> 高中棒球賽事數據及圖表</p>
+                <p><strong>特色</strong> 運用PageRank演算法分析數據指標</p>
+                <p><strong>賽事</strong> 中信盃黑豹旗高中大賽</p>
+                <p><strong>製作人</strong> 張文傑</p>
+                <p><strong>指導老師</strong> 許育嘉</p>
+            </div>
+        </section>
+    </main>
+
+    <div class="three-circle-section">
+        <div class="circle-container">
+            <div class="circle">
+                <img src="{{ url_for('static', filename='image/circle1.png') }}" alt="特色一">
+            </div>
+            <div class="circle-text">特色一</div>
+        </div>
+        <div class="circle-container">
+            <div class="circle">
+                <img src="{{ url_for('static', filename='image/circle2.png') }}" alt="特色一">
+            </div>
+            <div class="circle-text">特色二</div>
+        </div>
+        <div class="circle-container">
+            <div class="circle">
+                <img src="{{ url_for('static', filename='image/circle3.png') }}" alt="特色三">
+            </div>
+            <div class="circle-text">特色三</div>
+        </div>
+    </div>
+    
+    
+    
+        <div class="text-bottom">本網站結合棒球數據與創新技術，透過圖形化呈現，讓您直觀理解數據背後的含意。借助 PageRank 演算法，我們為台灣棒球賽事帶來全新視角和深入解析，幫助您更深刻理解黑豹旗賽事中的數據洞見。立即體驗，深入了解賽事背後的故事與精采細節！
+        </div>
+    </div>
+    <main class="content">
+        <div class="image-section2">
+            <img src="{{ url_for('static', filename='image/game intordouce.png') }}" alt="Story Image">
+        </div>
+    </main>
+    <main class="content">
+        <div class="image-section2">
+            <img src="{{ url_for('static', filename='image/Pagerank intordouce.png') }}" alt="Story Image">
+        </div>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h2>關於我們</h2>
+            </div>
+            <ul class="ftco-footer-social">
+                <li><a href="#"><i class="bi bi-tiktok"></i></a></li>
+                <li><a href="#"><i class="bi bi-facebook"></i></a></li>
+                <li><a href="#"><i class="bi bi-instagram"></i></a></li>
+            </ul>
+            <div class="footer-copyright">
+                <p>&copy; 張文傑 ALL RIGHTS RESERVED</p>
+            </div>
+        </div>
+        <div class="footer-image">
+            <img src="{{ url_for('static', filename='image/NTUS.png') }}" alt="Logo">
+        </div>
+    </footer>
+
+    <!-- JS -->
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', function () {
+            document.querySelector('#nav-menu').classList.toggle('show');
+        });
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>各隊學校比較</title> <!-- 頁面的標題 -->
+    <link href="{{ url_for('static', filename='css/style3.css') }}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css"/>
+    <script>
+        function filterDropdown(inputId, dropdownId) {
+            var input = document.getElementById(inputId);
+            var filter = input.value.toUpperCase();
+            var dropdown = document.getElementById(dropdownId);
+            var options = dropdown.getElementsByTagName("option");
+            
+            for (var i = 0; i < options.length; i++) {
+                var txtValue = options[i].textContent || options[i].innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    options[i].style.display = "";
+                } else {
+                    options[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="fixed-header">
+        <nav class="nav-bar">
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul id="nav-menu">
+                <li class="nav-item"><a class="nav-link active" href="{{ url_for('home') }}">首頁</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('school') }}">學校資料</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('data') }}">棒球數據</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('visual') }}">歷年數據圖表</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="content">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">        
+                <div class="pagerank-description mb-4">
+                    <h2>學校戰績查詢</h2>
+                    <h2></h2>
+                    <h2></h2>
+            <div class="pagerank-description mb-4">
+                    <strong>請選舉左右兩邊的各個學校來查看兩隊的近期對戰情形及資訊</strong>
+        <form method="GET" action="/school">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <input type="text" id="homeTeamSearch" class="form-control" placeholder="搜尋或選擇主隊" onkeyup="filterDropdown('homeTeamSearch', 'homeTeamDropdown')">
+                        <select id="homeTeamDropdown" name="home_team" class="form-select">
+                            <option value="">選擇主隊</option>
+                            {% for school in schools %}
+                            <option value="{{ school }}">{{ school }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <input type="text" id="awayTeamSearch" class="form-control" placeholder="搜尋或選擇客隊" onkeyup="filterDropdown('awayTeamSearch', 'awayTeamDropdown')">
+                        <select id="awayTeamDropdown" name="away_team" class="form-select">
+                            <option value="">選擇客隊</option>
+                            {% for school in schools %}
+                            <option value="{{ school }}">{{ school }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">搜尋</button>
+        </form>
+<!-- 進度條 -->
+<div id="loadingProgress" class="progress mt-3" style="display: none;">
+    <div class="progress-bar progress-bar-striped progress-bar-animated"
+         role="progressbar"
+         style="width: 100%;"
+         aria-valuenow="100"
+         aria-valuemin="0"
+         aria-valuemax="100">
+        資料查詢中，請稍候...
+    </div>
+</div>
+
+        <div class="team-details mt-4">
+                    {% if home_team_details %}
+        <div class="team-box">
+            <h3>{{ home_team_details.name }} 詳細資訊</h3>
+            <img src="{{ home_team_details.image_path }}" alt="{{ home_team_details.name }}" 
+            class="school-image" onerror="this.src='/static/image/default.png';">
+            <div class="team-stats">
+                <p>勝率: {{ home_team_details.win_rate }}</p>
+                <p>歷史最高排名: {{ home_team_details.highest_rank }}</p>
+                <p>冠軍數: {{ home_team_details.championships }}</p>
+                <p>歷年平均得分: {{ home_team_details.avg_score }}</p>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if away_team_details %}
+        <div class="team-box">
+            <h3>{{ away_team_details.name }} 詳細資訊</h3>
+            <img src="{{ away_team_details.image_path }}" alt="{{ away_team_details.name }}" 
+            class="school-image" onerror="this.src='/static/image/default.png';">
+            <div class="team-stats">
+                <p>勝率: {{ away_team_details.win_rate }}</p>
+                <p>歷史最高排名: {{ away_team_details.highest_rank }}</p>
+                <p>冠軍數: {{ away_team_details.championships }}</p>
+                <p>歷年平均得分: {{ away_team_details.avg_score }}</p>
+            </div>
+        </div>
+        {% endif %}
+        </div>
+        <!-- 最近戰績區塊 -->
+        {% if show_results %}
+        <h3 class="mt-4">最近戰績</h3>
+        <div class="recent-matches">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>日期</th>
+                        <th>主隊</th>
+                        <th>比分</th>
+                        <th>客隊</th>
+                        <th>賽事</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for match in matches %}
+                    <tr>
+                        <td>{{ match.date }}</td>
+                        <td>{{ match.Home_School_Name }}</td>
+                        <td>{{ match.PTS_Home }} : {{ match.PTS_Visit }}</td>
+                        <td>{{ match.Visitor_School_Name }}</td>
+                        <td>{{ match.match_type }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <p class="mt-4">請輸入主隊和客隊名稱以顯示最近戰績。</p>
+        {% endif %}
+    </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const form = document.querySelector("form");
+            const loadingProgress = document.getElementById("loadingProgress");
+    
+            if (form) {
+                form.addEventListener("submit", () => {
+                    // 顯示進度條
+                    loadingProgress.style.display = "block";
+                });
+            }
+    
+            // 等待所有內容加載完成後隱藏進度條
+            window.addEventListener("load", () => {
+                loadingProgress.style.display = "none";
+            });
+        });
+    
+        function filterDropdown(inputId, dropdownId) {
+            var input = document.getElementById(inputId);
+            var filter = input.value.toUpperCase();
+            var dropdown = document.getElementById(dropdownId);
+            var options = dropdown.getElementsByTagName("option");
+    
+            for (var i = 0; i < options.length; i++) {
+                var txtValue = options[i].textContent || options[i].innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    options[i].style.display = "";
+                } else {
+                    options[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+    <script>
+        function cleanInputs() {
+            const homeTeamInput = document.getElementById('homeTeamSearch');
+            const awayTeamInput = document.getElementById('awayTeamSearch');
+        
+            homeTeamInput.value = homeTeamInput.value.trim();
+            awayTeamInput.value = awayTeamInput.value.trim();
+        }
+        </script>
+    <footer>
+        <div class="footer-container">
+            <h2>關於我們</h2>
+            <ul class="ftco-footer-social">
+                <li><a href="https://www.tiktok.com/"><i class="bi bi-tiktok"></i></a></li>
+                <li><a href="https://www.facebook.com/"><i class="bi bi-facebook"></i></a></li>
+                <li><a href="https://www.instagram.com/"><i class="bi bi-instagram"></i></a></li>
+            </ul>
+            <div class="footer-copyright">
+                <p>&copy; 製作人張文傑 ALL RIGHTS RESERVED</p>
+                <p>+1 (222) 777 8888</p>
+            </div>
+        </div>
+        <div class="footer-image">
+            <img src="{{ url_for('static', filename='image/NTUS.png') }}" alt="Story Image">
+        </div>
+    </footer>
+     <!-- JS -->
+     <script>
+        document.querySelector('.menu-toggle').addEventListener('click', function () {
+            document.querySelector('#nav-menu').classList.toggle('show');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,472 @@
+/* 背景及全局样式 */
+body {
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'Noto Sans TC', sans-serif;
+    cursor: url('../image/baseball\ bat.ico') 16 16, auto;
+    margin: 0;
+    padding: 0;
+    background-color: #faf5ed; /* 背景颜色 */
+}
+
+.fixed-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-image: url('../image/bar.png'); /* 替換為您的頂部圖案 */
+    background-size: cover;
+        z-index: 1000;
+}
+
+.nav-bar {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: left;
+    padding: 40px;
+}
+
+.nav-bar ul {
+    list-style-type: none;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-bar li {
+    display: inline;
+}
+
+.nav-bar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 5px 10px;
+    transition: color 0.3s;
+}
+
+.nav-bar a.active {
+    font-weight: 700; /* 強制應用加粗 */
+    background-color: #e91e63; /* 使用背景顏色來凸顯 */
+    color: #fff;
+    border-radius: 5px;
+}
+
+.nav-bar a:hover {
+    color: #e91e63;
+}
+
+/* 内容区样式 */
+.content {
+    max-width: 100%;
+    margin: 50px auto 0; /* 確保內容不被固定導航欄遮擋 */
+    padding: 20px;
+    text-align: center;
+    background-color: #faf5ed;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);}
+/* 主标题 */
+h1 {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+/* 表单过滤区域样式 */
+.filter-options {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 表单组样式 */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+}
+
+
+
+.form-control,
+.form-select {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+/* 搜索按钮 */
+#searchButton {
+    margin-top: 20px;
+    padding: 12px 40px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#searchButton:hover {
+    background-color: #0056b3;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* 数据可视化部分样式 */
+.visualization-section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 卡片样式 */
+.visualization-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.visualization-card:hover {
+    transform: translateY(-5px);
+}
+
+.visualization-card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.visualization-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.visualization-card p {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Modal 样式 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal .close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+#caption {
+    color: #ccc;
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 20px;
+}
+
+/* 小屏幕适配 */
+@media (max-width: 768px) {
+    .filter-options {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .form-control,
+    .form-select {
+        width: 100%;
+    }
+
+    #searchButton {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .visualization-section {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+/* Progress bar styles */
+.progress {
+    height: 10px;
+    background-color: #e9ecef;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #007bff;
+    transition: width 0.3s ease;
+}
+
+.progress-bar-striped {
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
+    background-size: 1rem 1rem;
+}
+
+.progress-bar-animated {
+    animation: progress-bar-stripes 1s linear infinite;
+}
+
+@keyframes progress-bar-stripes {
+    from {
+        background-position: 1rem 0;
+    }
+    to {
+        background-position: 0 0;
+    }
+}
+
+footer {
+    background-color: #000; /* 黑色背景 */
+    color: #fff; /* 白色文字 */
+    font-family: Arial, sans-serif;
+    padding: 20px 0;
+    position: relative;
+    margin-top: 0; /* 清除間距 */
+    border-top: 2px solid #ccc; /* 分隔線 */
+    text-align: center;
+}
+
+/* Footer Container 調整 */
+.footer-container {
+    display: flex;
+    justify-content: center; /* 內容置中 */
+    align-items: center;
+    flex-direction: column;
+}
+
+/* 修改「關於我們」標題樣式 */
+.footer-container h2 {
+    color: #fff; /* 白色標題 */
+    margin-bottom: 10px;
+}
+
+/* 社交圖示樣式 */
+.ftco-footer-social {
+    display: flex;
+    gap: 15px; /* 圖示之間的間距 */
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.ftco-footer-social li a {
+    color: #fff;
+    font-size: 24px;
+    transition: color 0.3s;
+}
+
+.ftco-footer-social li a:hover {
+    color: #f5a623; /* 滑鼠懸停時的顏色 */
+}
+
+/* 版權和聯絡資訊 */
+.footer-copyright p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #ccc;
+}
+
+/* 左下角圖片 */
+.footer-image {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+}
+
+.footer-image img {
+    width: 80px;
+    height: auto;
+}
+@media (max-width: 768px) {
+    /* 導覽列 - 手機版的按鈕和選單 */
+    .nav-bar ul {
+        display: none; /* 手機模式初始隱藏 */
+        flex-direction: column;
+        background-color: #333;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        padding: 10px 0;
+    }
+
+
+    .nav-bar ul.show {
+        display: flex; /* 顯示選單 */
+    }
+
+    .menu-toggle {
+        display: block;
+        position: fixed; /* 固定在頁面最上層，不影響其他內容 */
+        top: 15px; /* 與頂部的距離 */
+        left: 15px; /* 與左側的距離 */
+        z-index: 1001; /* 確保在最上層 */
+        font-size: 28px;
+        color: #ff3366;
+        background-color: #000;
+        border: 2px solid #ff3366;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        padding: 8px;
+        cursor: pointer;
+    }
+    
+    
+    .menu-toggle:hover {
+        color: #fff; /* 懸停時圖示變白色 */
+        background-color: #ff3366; /* 背景變成鮮豔色 */
+        border-color: #fff; /* 邊框顏色變白 */
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.5); /* 懸停時增加陰影 */
+    }
+    /* 關於區塊 - 強制圖片和文字保持並排 */
+    .about-section {
+        display: flex;
+        flex-direction: row; /* 水平排列 */
+        align-items: center; /* 垂直置中 */
+        justify-content: space-between; /* 左右並排 */
+        gap: 10px;
+        padding: 10px;
+        flex-wrap: nowrap; /* 禁止換行 */
+    }
+
+    .about-section .left-section,
+    .about-section .text-container {
+        flex: 1; /* 平均分配空間 */
+        min-width: 0; /* 避免超出容器 */
+    }
+
+    .left-section h1 {
+        font-size: 20px; /* 標題字體變小 */
+        margin-bottom: 5px;
+    }
+
+    .image-container img {
+        max-width: 100%; /* 縮放圖片至容器寬度 */
+        height: auto;
+        object-fit: contain; /* 保持圖片比例 */
+    }
+
+    .text-container p {
+        font-size: 14px; /* 文字字體縮小 */
+        line-height: 1.4;
+        margin-bottom: 8px;
+    }
+
+    .three-circle-section {
+        flex-direction: column; /* 變成直式排列 */
+        gap: 20px; /* 間距縮小 */
+    }
+
+    .circle-container {
+        flex-direction: column; /* 保持圖片與文字上下排列 */
+        align-items: center; /* 水平居中 */
+    }
+
+    .circle {
+        width: 200px; /* 縮小圖片大小 */
+        height: 200px;
+    }
+
+    .circle img {
+        width: 100%; /* 縮放圖片至圓形寬度 */
+        height: auto;
+        object-fit: contain;
+    }
+
+    .content {
+        max-width: 100%;
+        margin: 10px auto 0; /* 確保內容不被固定導航欄遮擋 */
+        padding: 10px 0px;
+    }
+    
+    /* 主要內容區域 */
+    .content, main {
+        padding-top: 50px; /* 與導航欄高度相匹配（80px + 20px 留白） */
+        padding-bottom: 20px;
+        text-align: center;
+        max-width: 100%;
+        background-color: #faf5ed;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+
+    .image-section2 img {
+        width: 100%; /* 縮小圖片寬度 */
+        margin: 0 auto; /* 圖片水平置中 */
+    }
+
+    /* 底部區塊 - 對齊 */
+    footer {
+        text-align: center;
+    }
+
+    .footer-container {
+        flex-direction: column; /* 垂直堆疊 */
+    }
+
+    .footer-image img {
+        width: 60px; /* 縮小圖片大小 */
+        height: auto;
+    }
+    .filter-options {
+        flex-direction: column; /* 改為直式排列 */
+        align-items: center; /* 水平置中 */
+    }
+    .form-group {
+        width: 100%; /* 欄位寬度填滿父容器 */
+    }
+    button#searchButton {
+        width: 100%; /* 搜尋按鈕也填滿 */
+    }
+}

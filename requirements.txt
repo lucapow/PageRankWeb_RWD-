@@ -1,0 +1,9 @@
+Flask
+numpy
+scipy
+pandas
+matplotlib
+networkx
+mysql-connector-python
+geopandas
+SQLAlchemy

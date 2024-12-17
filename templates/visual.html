@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>歷年數據圖表</title>
+    <link href="{{ url_for('static', filename='css/style4.css') }}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css"/>
+    <script>
+        // 更新圖表函數，加入進度條
+        function updateChart(imageId, progressId, route, params) {
+    return new Promise((resolve) => {
+        const imageUrl = `/${route}?${params.toString()}&_=${new Date().getTime()}`;
+        const chartImage = document.getElementById(imageId);
+        const progressBarContainer = document.getElementById(progressId);
+        const progressBar = progressBarContainer.querySelector('.progress-bar');
+
+        // 顯示進度條
+        progressBarContainer.style.display = "block";
+        progressBar.style.width = "0%";
+
+        // 模擬進度更新
+        let progress = 0;
+        const interval = setInterval(() => {
+            progress = Math.min(progress + 10, 90); // 模擬到 90%
+            progressBar.style.width = `${progress}%`;
+        }, 300);
+
+        // 更新圖表圖片
+        chartImage.src = imageUrl;
+
+        chartImage.onload = () => {
+            clearInterval(interval);
+            progressBar.style.width = "100%"; // 加載完成
+            setTimeout(() => {
+                progressBarContainer.style.display = "none"; // 隱藏進度條
+            }, 500);
+            resolve();
+        };
+
+        chartImage.onerror = () => {
+            clearInterval(interval);
+            progressBar.style.width = "0%";
+            progressBarContainer.style.display = "none";
+            console.error(`圖表 ${imageId} 無法載入，檢查 URL: ${imageUrl}`);
+            resolve(); // 即使失敗也繼續其他圖表更新
+        };
+    });
+}
+
+// 更新所有圖表
+async function updateAllCharts() {
+    const startYear = document.getElementById("startYear").value;
+    const endYear = document.getElementById("endYear").value;
+    const rank = document.getElementById("rankInput").value;
+
+    if (!startYear || !endYear) {
+        alert("請輸入起始年份和結束年份！");
+        return;
+    }
+
+    if (parseInt(startYear) > parseInt(endYear)) {
+        alert("起始年份不能大於結束年份！");
+        return;
+    }
+
+    const params = new URLSearchParams({
+        startYear: startYear,
+        endYear: endYear,
+        rank: rank
+    });
+
+    try {
+        await updateChart('chart1', 'progress1', 'generate_score_trend_chart', params);
+        await updateChart('chart7', 'progress2', 'generate_official_rank_trend_chart', params);
+        await updateChart('chart5', 'progress3', 'generate_region_heatmap_chart', params);
+        await updateChart('chart6', 'progress4', 'generate_school_count_trend_chart', params);
+        await updateChart('chart3', 'progress6', 'generate_team_pr_relationship_chart', params);
+        await updateChart('chart2', 'progress5', 'generate_pr_value_chart', params);
+    } catch (error) {
+        console.error("更新圖表時發生錯誤：", error);
+    }
+}
+
+// 開啟模態框以顯示圖表
+function openModal(chartId) {
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImage");
+    const chartImg = document.getElementById(chartId);
+    modal.style.display = "block";
+    modalImg.src = chartImg.src;
+    document.getElementById("caption").innerText = chartImg.alt;
+}
+
+// 關閉模態框
+function closeModal() {
+    document.getElementById("imageModal").style.display = "none";
+}
+    </script>
+</head>
+<body>
+       <!-- Header -->
+       <header class="fixed-header">
+        <nav class="nav-bar">
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul id="nav-menu">
+                <li class="nav-item"><a class="nav-link active" href="{{ url_for('home') }}">首頁</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('school') }}">學校資料</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('data') }}">棒球數據</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('visual') }}">歷年數據圖表</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="content">
+            <main class="content container mt-5">
+                <h1>Visual 數據圖表</h1>
+            <!-- 功能描述和提示 -->
+                <div class="pagerank-description mb-4 text-center">
+                    <p class="fw-bold">選擇以下年份範圍和學校數量，生成各類學校的數據圖表！</p>
+                    <p>起始年份到結束年份可為單一年或範圍（例如：2015 至 2020）。</p>
+                    <p class="text-danger">建議數量不超過 10，避免圖表過於擁擠或混亂。</p>
+                </div>
+                <div class="filter-options">
+                        <div class="form-group">
+                            <label for="startYear" class="form-label">起始年份</label>
+                            <input type="number" id="startYear" class="form-control" placeholder="例如 2013" min="2013" max="2023">
+                        </div>
+                        <div class="form-group">
+                            <label for="endYear" class="form-label">結束年份</label>
+                            <input type="number" id="endYear" class="form-control" placeholder="例如 2023" min="2013" max="2023">
+                        </div>
+                        <div class="form-group">
+                            <label for="rankInput" class="form-label">輸入數量排名</label>
+                            <input id="rankInput" class="form-control" type="number" min="1" max="20" placeholder="輸入數量排名" value="3">
+                        </div>
+                    </div>
+                    <button id="searchButton" type="button" class="btn btn-primary" onclick="updateAllCharts()">搜尋</button>
+                </main>
+    <!-- Visualization Section -->
+    <section class="visualization-section">
+        <div class="visualization-card">
+            <h3 class="card-header">得分趨勢圖</h3>
+            <img id="chart1" class="chart-image" alt="得分趨勢圖" onclick="openModal('chart1')" src="/static/image/score_trend/default.png">
+            <div id="progress1" class="progress" style="display: none; margin-top: 10px;">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 0%;"></div>
+            </div>
+            <p>此圖所代表的是各個學校歷年來的得分趨勢，並運用折線圖展示學校的平均表現隨時間的變化圖。 </p>
+            <p>Y軸為總得分 X軸為年分 </p>
+        </div>
+
+        <!-- Repeat for all charts -->
+        <div class="visualization-card">
+            <h3 class="card-header">官方排名變化</h3>
+            <img id="chart7" class="chart-image" alt="官方排名變化" onclick="openModal('chart7')" src="/static/image/official_rank/default.png">
+            <div id="progress2" class="progress" style="display: none; margin-top: 10px;">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 0%;"></div>
+            </div>
+            <p>此圖所代表的是各個學校歷年來的官方排名，並運用折線圖展示學校的官方排名隨時間的變化圖</p>
+            <p>Y軸為官方排名 X軸為年分 </p>
+            <p>黑豹旗賽事官方的名次取到前八名</p>
+        </div>
+        <div class="visualization-card">
+            <h3 class="card-header">縣市的熱區圖</h3>
+            <img id="chart5" class="chart-image" alt="熱區圖" onclick="openModal('chart5')" src="/static/image/heatmap/default.png">
+            <div id="progress3" class="progress" style="display: none; margin-top: 10px;">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 0%;"></div>
+            </div>
+            <p>此圖所代表的是各個縣市在黑豹旗賽事上的表現，以總得分為依據，顏色較深的縣市代表更多的得分及更強的實力</p>
+
+        </div>
+        <div class="visualization-card">
+            <h3 class="card-header">學校數量趨勢圖</h3>
+            <img id="chart6" class="chart-image" alt="學校數量趨勢圖" onclick="openModal('chart6')" src="/static/image/school_count/default.png">
+            <div id="progress4" class="progress" style="display: none; margin-top: 10px;">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 0%;"></div>
+            </div>
+            <p>此圖展示了黑豹旗從2013年第一屆開始的各年度的球隊參與數量，可以看出這個盃賽的規模越來越盛大</p>
+            <p>Y軸為學校數量 X軸為年分 </p>
+        </div>
+        <div class="visualization-card">
+            <h3 class="card-header">球隊之間的 PR 值關係圖</h3>
+            <img id="chart3" class="chart-image" alt="PR 值關係圖" onclick="openModal('chart3')" src="/static/image/team_pr/default.png">
+            <div id="progress6" class="progress" style="display: none; margin-top: 10px;">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 0%;"></div>
+            </div>
+            <p>此圖展示的圖表叫做向量圖用來表示各個隊伍之間的強弱關係，在圖中顏色越深則代表這隻隊伍有更強的實力和表現</p>
+            <p>建議以一年為單位可以更直觀的看清當年度的賽事情形</p>
+        </div>
+        <div class="visualization-card">
+            <h3 class="card-header">各學校的 PR 值變化圖</h3>
+            <img id="chart2" class="chart-image" alt="PR 值變化圖" onclick="openModal('chart2')" src="/static/image/pr_value/default.png">
+            <div id="progress5" class="progress" style="display: none; margin-top: 10px;">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 0%;"></div>
+            </div>
+            <p>此圖所代表的是各個學校歷年來的PR 值，並運用折線圖展示學校的PR 值隨時間的變化圖。</p>
+            <p>Y軸為PR 值 X軸為年分 </p>
+
+        </div>
+    </section>
+
+    <!-- Modal for Enlarged View -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div id="caption"></div>
+    </div>
+    <footer>
+        <div class="footer-container">
+            <h2>關於我們</h2>
+            <ul class="ftco-footer-social">
+                <li><a href="https://www.tiktok.com/"><i class="bi bi-tiktok"></i></a></li>
+                <li><a href="https://www.facebook.com/"><i class="bi bi-facebook"></i></a></li>
+                <li><a href="https://www.instagram.com/"><i class="bi bi-instagram"></i></a></li>
+            </ul>
+            <div class="footer-copyright">
+                <p>&copy; 製作人張文傑 ALL RIGHTS RESERVED</p>
+                <p>+1 (222) 777 8888</p>
+            </div>
+        </div>
+        <div class="footer-image">
+            <img src="{{ url_for('static', filename='image/NTUS.png') }}" alt="Story Image">
+        </div>
+    </footer>
+     <!-- JS -->
+     <script>
+        document.querySelector('.menu-toggle').addEventListener('click', function () {
+            document.querySelector('#nav-menu').classList.toggle('show');
+        });
+    </script>
+</body>
+</html>
